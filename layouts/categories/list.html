@@ -1,0 +1,63 @@
+{{- define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+</header>
+
+{{- $categories := .Site.Taxonomies.categories }}
+{{- if $categories }}
+<div class="terms-tags">
+  {{- range $name, $taxonomy := $categories }}
+  {{- with $.Site.GetPage (printf "/categories/%s" $name) }}
+  <a class="term-tag" href="{{ .Permalink }}" title="{{ $name }} ({{ len $taxonomy }} posts)">
+    <span class="term-name">{{ $name | title }}</span>
+    <span class="term-count">{{ len $taxonomy }}</span>
+  </a>
+  {{- end }}
+  {{- end }}
+</div>
+{{- end }}
+
+<style>
+.terms-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.term-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.term-tag:hover {
+  background: var(--tertiary);
+  transform: translateY(-2px);
+}
+
+.term-count {
+  background: var(--secondary);
+  color: var(--primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .term-tag {
+  background: var(--code-bg);
+}
+
+[data-theme="dark"] .term-tag:hover {
+  background: var(--tertiary);
+}
+</style>
+{{- end }}

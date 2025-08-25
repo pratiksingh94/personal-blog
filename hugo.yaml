@@ -1,0 +1,195 @@
+baseURL: "http://localhost:1313/"
+title: "Pratik's Blog"
+# paginate: 5
+theme: ["PaperMod"]
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+
+
+params:
+  env: development
+  title: "Pratik's Blog"
+  description: "Cybersecurity and Dev blogs by Pratik, a 17 y/o Security Researcher from India"
+  keywords: [Blog, Cybersecurity, Development, Security Research, Blue Team, Applied Cryptography]
+  author: Pratik Singh
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: true
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: false
+  showArchive: true
+
+  ShowTaxonomyCount: true
+
+
+  assets:
+    disableHLJS: true 
+    disableFingerprinting: false
+    favicon: "/favicon.ico"
+    apple_touch_icon: "/apple-touch-icon.png"
+    customCSS:
+      - css/custom.css
+      - css/syntax.css
+
+  label:
+    text: "Home"
+    icon: /apple-touch-icon.png
+    iconHeight: 35
+
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/pratiksingh94"
+    - name: x
+      url: "https://x.com/Plutonium1309"
+    - name: discord
+      url: "https://discordapp.com/users/742228129107410976"
+    - name: linkedin
+      url: "https://linkedin.com/in/pratik-singh-sec"
+    - name: email
+      url: "mailto:pratiksingh0@proton.me"
+    - name: rss
+      url: "/index.xml"
+
+
+  homeInfoParams:
+    Title: "Hi there \U0001F44B"
+    Content: >
+      I am Pratik, and this is my blog site, I am more into Blue Team Ops and Applied Cryptography so you are going to see a lot of that here, but also other content about cybersecurity too cuz why not :)
+
+
+  cover:
+    hidden: false
+    hiddenInList: false
+    hiddenInSingle: false
+    linkFullImages: true
+    responsiveImages: true
+
+  editPost:
+    URL: "https://github.com/pratiksingh94/personal-blog/content"
+    Text: "📝 Suggest Changes"
+    appendFilePath: true 
+
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 2
+    limit: 15
+    keys: ["title", "permalink", "summary", "content", "tags", "categories", "series"]
+  # googleAnalytics: "G-XXXXXXXXXX"
+  
+  math: true
+
+
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 10
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 15
+    - identifier: series
+      name: Series
+      url: /series/
+      weight: 17
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 25
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 30
+    - identifier: contact
+      name: Contact
+      url: /contact/
+      weight: 35
+    - identifier: pratiksingh
+      name: pratiksingh.xyz
+      url: https://pratiksingh.xyz
+      weight: 40
+
+
+taxonomies:
+  tag: "tags"
+  category: "categories"
+  series: "series"
+
+
+pygmentsUseClasses: true
+pygmentsCodeFences: true
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    lineNos: true
+    lineNumbersInTable: true
+    style: rose-pine
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    hl_Lines: ""
+
+
+privacy:
+  googleAnalytics:
+    disable: false
+    anonymizeIP: true
+    respectDoNotTrack: true
+  x:
+    enableDNT: true
+  youtube:
+    privacyEnhanced: true
+
+
+sitemap:
+  changefreq: "weekly"
+  priority: 0.5
+  filename: "sitemap.xml"
+
+
+related:
+  includeNewer: true
+  indices:
+    - name: tags
+      weight: 100
+    - name: categories
+      weight: 200
+  threshold: 80
+  toLower: false

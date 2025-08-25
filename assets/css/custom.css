@@ -1,0 +1,136 @@
+.terms-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.term-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.term-tag:hover {
+  background: var(--tertiary);
+  transform: translateY(-2px);
+}
+
+.term-count {
+  background: var(--secondary);
+  color: var(--primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .term-tag {
+  background: var(--code-bg);
+}
+
+[data-theme="dark"] .term-tag:hover {
+  background: var(--tertiary);
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.series-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--theme);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.series-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.series-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.series-card h3 a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.series-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+.post-count {
+  background: var(--tertiary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.series-description {
+  margin: 0.5rem 0 1rem 0;
+  color: var(--secondary);
+  font-size: 0.95rem;
+}
+
+.series-posts {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.series-post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.series-post-item a {
+  text-decoration: none;
+  color: var(--primary);
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.series-post-item time {
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+.series-more {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.series-more a {
+  color: var(--tertiary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .series-card {
+  background: var(--code-bg);
+}
+
+[data-theme="dark"] .series-card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}

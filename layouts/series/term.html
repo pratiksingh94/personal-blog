@@ -1,0 +1,106 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>Series: {{ .Title | title }}</h1>
+  <div class="series-meta">
+    <span>{{ len .Pages }} posts in this series</span>
+  </div>
+</header>
+
+<div class="series-posts-list">
+  {{- range $index, $page := .Pages.ByDate }}
+  <article class="series-post-entry">
+    <div class="series-post-number">{{ add $index 1 }}</div>
+    <div class="series-post-content">
+      <header class="entry-header">
+        <h2 class="entry-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+      </header>
+      <div class="entry-meta">
+        <time>{{ .Date.Format "January 2, 2006" }}</time>
+        {{- if .Params.readingTime }}
+        <span class="reading-time">{{ .ReadingTime }} min read</span>
+        {{- end }}
+      </div>
+      {{- if .Summary }}
+      <div class="entry-summary">{{ .Summary }}</div>
+      {{- end }}
+    </div>
+  </article>
+  {{- end }}
+</div>
+
+<style>
+.series-meta {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.series-posts-list {
+  margin-top: 2rem;
+}
+
+.series-post-entry {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--theme);
+}
+
+.series-post-number {
+  background: var(--tertiary);
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.series-post-content {
+  flex: 1;
+}
+
+.entry-title {
+  margin: 0 0 0.5rem 0;
+}
+
+.entry-title a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.entry-title a:hover {
+  color: var(--tertiary);
+}
+
+.entry-meta {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.reading-time {
+  margin-left: 1rem;
+}
+
+.entry-summary {
+  color: var(--secondary);
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .series-post-entry {
+  background: var(--code-bg);
+}
+</style>
+
+{{- end }}

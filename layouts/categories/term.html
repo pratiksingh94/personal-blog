@@ -1,0 +1,133 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>Category: {{ .Title | title }}</h1>
+  <div class="category-meta">
+    <span>{{ len .Pages }} {{ if eq (len .Pages) 1 }}post{{ else }}posts{{ end }} in this category</span>
+  </div>
+</header>
+
+<div class="category-posts-list">
+  {{- range .Pages.ByDate.Reverse }}
+  <article class="post-entry">
+    <header class="entry-header">
+      <h2 class="entry-title">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+    </header>
+    <div class="entry-meta">
+      <time>{{ .Date.Format "January 2, 2006" }}</time>
+      {{- if .Params.readingTime }}
+      <span class="reading-time">{{ .ReadingTime }} min read</span>
+      {{- end }}
+      {{- with .Params.tags }}
+      <div class="entry-tags">
+        {{- range . }}
+        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">#{{ . }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+    {{- if .Summary }}
+    <div class="entry-summary">
+      {{ .Summary }}
+      {{- if .Truncated }}
+      <div class="read-more">
+        <a href="{{ .Permalink }}">Read more →</a>
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
+  </article>
+  {{- end }}
+</div>
+
+<style>
+.category-meta {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.category-posts-list {
+  margin-top: 2rem;
+}
+
+.post-entry {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--theme);
+}
+
+.entry-title {
+  margin: 0 0 0.5rem 0;
+}
+
+.entry-title a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.entry-title a:hover {
+  color: var(--tertiary);
+}
+
+.entry-meta {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reading-time {
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+}
+
+.entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+}
+
+.tag {
+  background: var(--tertiary);
+  color: var(--primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.tag:hover {
+  background: var(--secondary);
+}
+
+.entry-summary {
+  color: var(--secondary);
+  line-height: 1.6;
+}
+
+.read-more {
+  margin-top: 0.5rem;
+}
+
+.read-more a {
+  color: var(--tertiary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .post-entry {
+  background: var(--code-bg);
+}
+</style>
+
+{{- end }}
